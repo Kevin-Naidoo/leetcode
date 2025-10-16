@@ -1,18 +1,18 @@
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
+        int insertPos = 0;
 
-        auto ctLength = nums.size();
-        vector<int> temp(ctLength, 0);
-        auto count_ptr = 0;
-
-        for (int x = 0; x < nums.size(); x++) {
-            if (nums.at(x) != 0) {
-                temp.at(count_ptr) = nums.at(x);
-
-                count_ptr++;
+        // Move non-zero elements forward
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] != 0) {
+                nums[insertPos++] = nums[i];
             }
         }
-        nums = temp;
+
+        // Fill remaining positions with zeros
+        while (insertPos < nums.size()) {
+            nums[insertPos++] = 0;
+        }
     }
 };
